@@ -23,6 +23,14 @@ type IPool interface {
 
 var taskPool sync.Pool
 
+func init() {
+	taskPool.New = newTask
+}
+
+func newTask() interface{} {
+	return &task{}
+}
+
 type task struct {
 	ctx  context.Context
 	f    func()
