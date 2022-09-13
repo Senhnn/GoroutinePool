@@ -51,8 +51,9 @@ func (w *worker) run() {
 						}
 					}
 				}()
-				t.Recycle()
+				t.f()
 			}()
+			t.Recycle()
 		}
 	}()
 }
